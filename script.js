@@ -2,9 +2,11 @@
 function randomRgb() {
   let rgbColor = document.querySelector('#rgb-color');
   let ball = document.querySelectorAll('.ball');
-  rgbColor.innerHTML = ball[Math.floor(Math.random()) * 5].style.backgroundColor;
+
+  rgbColor.innerHTML = ball[Math.floor(Math.random() * 5)].style.backgroundColor;
 }
 
+// Gera cores aleatórias para as bolas.
 function colorInBalls() {
   let ball = document.querySelectorAll('.ball');
 
@@ -13,6 +15,24 @@ function colorInBalls() {
   }
 }
 
+// Clicar em um circulo colorido, deve ser mostrado um texto indicando se está correto.
+function clickBall() {
+  let ball = document.querySelectorAll('.ball');
+  let rgbColor = document.querySelector('#rgb-color');
+  let answer = document.querySelector('#answer');
+
+  ball.forEach(element => {
+    element.addEventListener('click', (event) => {
+      if (event.target.style.backgroundColor === rgbColor.innerHTML){
+        answer.innerHTML = 'Acertou!'
+      } else {
+        answer.innerHTML = 'Errou! Tente novamente!'
+      }
+    })
+  });
+}
+
 
 colorInBalls()
 randomRgb()
+clickBall()
