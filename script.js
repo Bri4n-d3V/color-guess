@@ -23,7 +23,7 @@ function clickBall() {
 
   ball.forEach(element => {
     element.addEventListener('click', (event) => {
-      if (event.target.style.backgroundColor === rgbColor.innerHTML){
+      if (event.target.style.backgroundColor === rgbColor.innerHTML) {
         answer.innerHTML = 'Acertou!'
       } else {
         answer.innerHTML = 'Errou! Tente novamente!'
@@ -32,7 +32,20 @@ function clickBall() {
   });
 }
 
+// Botão para reiniciar
+function reset() {
+  let reiniciar = document.querySelector('#reset-game');
+  let answer = document.querySelector('#answer');
+
+  reiniciar.addEventListener('click', () => {
+    answer.innerHTML = 'Escolha uma cor';
+    colorInBalls()
+    randomRgb()
+    clickBall()
+  })
+}
 
 colorInBalls()
 randomRgb()
 clickBall()
+reset()
